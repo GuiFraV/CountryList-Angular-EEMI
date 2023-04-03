@@ -1,27 +1,16 @@
-# CountryList
+## CountryList
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
+# Set up rooting des deux pages 
+1.ng new countryList
+2.ng g c pays && ng g c jokes
+3.import des pages dans src/app/app-routing.moudle.ts
+4. Ajout des routes suivantes dans src/app/app-routing.moudle.ts
+ {path: 'pays', component: PaysComponent},
+  {path: 'jokes', component: JokesComponent},
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Page pays
+1. créer un service pour appeler l'api suivante : https://restcountries.com/v3.1/all 
+voir la doc => https://angular.io/guide/http
+Ensuite taper la commande suivante : ng generate service pays. 
+On importe puis on injecte le Http Client dans le constructeur de service src/app/pays.service.ts voir la doc suivante : https://angular.io/guide/rx-library
+Ensuite on importe le pays service dans la page pays

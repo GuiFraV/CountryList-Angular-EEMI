@@ -1,0 +1,31 @@
+<h1>Liste des pays</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Drapeau</th>
+      <th>Nom</th>
+      <th>Capitale</th>
+      <th>Monnaie</th>
+      <th>Langue(s)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let country of countries">
+      <td><img [src]="country.flags[1]" [alt]="country.name.common + ' flag'" width="50" height="30"></td>
+      <td>{{ country.name.common }}</td>
+      <td>{{ country.capital[0] }}</td>
+      <td>
+        <span *ngFor="let currencyCode of objectKeys(country.currencies)">
+          {{ country.currencies[currencyCode].name }} ({{ currencyCode }})
+          <br *ngIf="!isLast(objectKeys(country.currencies), currencyCode)">
+        </span>
+      </td>
+      <td>
+        <span *ngFor="let languageCode of objectKeys(country.languages)">
+          {{ country.languages[languageCode] }} ({{ languageCode }})
+          <br *ngIf="!isLast(objectKeys(country.languages), languageCode)">
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
