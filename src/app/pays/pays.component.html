@@ -1,4 +1,5 @@
 <h1>Liste des pays</h1>
+
 <table>
   <thead>
     <tr>
@@ -11,7 +12,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let country of countries">
-      <td><img [src]="country.flags[1]" [alt]="country.name.common + ' flag'" width="50" height="30"></td>
+      <td><img [src]="country.flags.png" [alt]="country.name.common + ' flag'" width="50" height="30"></td>
       <td>{{ country.name.common }}</td>
       <td>{{ country.capital[0] }}</td>
       <td>

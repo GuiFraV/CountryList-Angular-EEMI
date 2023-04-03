@@ -8,6 +8,7 @@ import { PaysService } from '../pays.service';
 })
 export class PaysComponent implements OnInit {
   countries: any[] = [];
+  filteredCountries: any[] = [];
 
   constructor(private countryService: PaysService) { }
 
@@ -19,6 +20,7 @@ export class PaysComponent implements OnInit {
     this.countryService.getCountries().subscribe(
       (data) => {
         this.countries = data;
+        this.filteredCountries = [...this.countries];
         this.sortCountriesAlphabetically();
       },
       (error) => {
@@ -37,5 +39,11 @@ export class PaysComponent implements OnInit {
 
   sortCountriesAlphabetically(): void {
     this.countries.sort((a, b) => a.name.common.localeCompare(b.name.common));
+  }
+
+  filterEuropeanCountries(): void {
+    this.filteredCountries = this.countries.filter(
+      (country) => country.region === 'Europe'
+    );
   }
 }
